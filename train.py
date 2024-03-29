@@ -31,7 +31,7 @@ def set_seeds(seed):
     torch.backends.cudnn.benchmark = False
 
 # training with the next word prediction task
-def train(model, data_loader, n_steps, optimizer, scheduler, criterion, macro_batch_size, device):
+def train(model, data_loader, n_steps, optimizer, scheduler, criterion, macro_batch_size, device, cfg):
     model.train()
     total_loss = 0
     n_epochs = ceil(n_steps / len(data_loader))
@@ -61,7 +61,11 @@ def train(model, data_loader, n_steps, optimizer, scheduler, criterion, macro_ba
               scheduler.step()
               optimizer.zero_grad()
 
-          if global_step_cnt % 100 == 0 or global_step_cnt <= 3:
+          if global_step_cnt % 1000 == 0 or global_step_cnt == 1:
+            # save model
+            model.save_pretrained(f"models/model_{cfg.wandb_dataname}_{global_step_cnt}")
+
+          if global_step_cnt % 100 == 0 or global_step_cnt <= 100:
               model.eval()
               with torch.no_grad():
                 logits_at_50 = logits[:, 50]
@@ -147,7 +151,7 @@ if __name__ == "__main__":
                    name=wandb_name)
 
         # train
-        train(model, data_loader, cfg.n_steps, optimizer, scheduler, criterion, cfg.macro_batch_size, device)
+        train(model, data_loader, cfg.n_steps, optimizer, scheduler, criterion, cfg.macro_batch_size, device, cfg)
         # print(f"Training loss: {loss}")
 
     main()

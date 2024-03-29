@@ -9,6 +9,7 @@ dataset = dataset.add_column('score', [0.0]*len(dataset))
 
 def get_score(example):
     example['score'] = example['writing_style_average'] + example['facts_and_trivia_average']
+    return example
 
 dataset = dataset.map(get_score)
 dataset = dataset.sort('score')

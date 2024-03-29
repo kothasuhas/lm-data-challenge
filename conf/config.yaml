@@ -2,6 +2,8 @@
 # The values can be overwritten by the command line arguments
 
 # data related
+# load_type: 'huggingface'
+# dataset_name: 'kothasuhas/QuRatedPajama_c4'
 load_type: 'load_from_disk'
 dataset_name: '/data/suhas_kotha/curriculum/real_data_training/QuRatedPajama_c4_modified'
 batch_size: 16
@@ -23,4 +25,4 @@ seed: 0
 
 # logging
 wandb_entity: 'kothasuhas'
-wandb_dataname: 'QuRate_c4'
+wandb_dataname: 'QuRate_c4_modified'
