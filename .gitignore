@@ -161,6 +161,8 @@ cython_debug/
 
 # Project-specific
 QuRatedPajama_c4_modified/
+QuRatedPajama_c4_ordered/
+QuRatedPajama_c4_filtered/
 models/
 outputs/
 .hydra/
