@@ -1,0 +1,26 @@
+# This file is used to set the default values for the training script
+# The values can be overwritten by the command line arguments
+
+# data related
+load_type: 'load_from_disk'
+dataset_name: '/data/suhas_kotha/curriculum/real_data_training/QuRatedPajama_c4_modified'
+batch_size: 16
+macro_batch_size: 512
+shuffle: False
+
+# model
+# choices: 'gpt2', 'gptNeo'
+model_name: 'gptNeo'
+n_layer: 4
+n_head: 8
+n_inner: 768
+n_embd: 768
+
+# training
+lr: 3e-4
+n_steps: 2e5
+seed: 0
+
+# logging
+wandb_entity: 'kothasuhas'
+wandb_dataname: 'QuRate_c4'
