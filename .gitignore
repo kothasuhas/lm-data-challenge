@@ -163,3 +163,4 @@ cython_debug/
 QuRatedPajama_c4_modified/
 models/
 outputs/
+.hydra/

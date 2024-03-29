@@ -1,0 +1,25 @@
+# This file is used to set the default values for the evaluation script
+# The values can be overwritten by the command line arguments
+
+# data related
+load_type: 'huggingface'
+dataset_name: 'kothasuhas/QuRatedPajama_c4'
+batch_size: 16
+shuffle: True
+
+model_name: 'gptNeo'
+n_layer: 4
+n_head: 8
+n_inner: 768
+n_embd: 768
+model_file_path: '/path/to/model/file'
+
+n_steps: 100
+seed: 0
+
+hydra:
+  run:
+    dir: .
+  job_logging:
+    root:
+      handlers: null
